@@ -1,0 +1,7 @@
+---
+git:
+  url: git@github.com:Mpluya/tap-gitops.git
+  ref: origin/main
+  sub_path: clusters/upgrade-view/cluster-config
+tap_package_repository:
+  oci_repository: cxscssa.azurecr.io/tap-1-6-8/tap-packages
