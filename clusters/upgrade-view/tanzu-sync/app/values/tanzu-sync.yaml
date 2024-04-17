@@ -1,6 +1,6 @@
 ---
 git:
-  url: ssh://git@github.com/Mpluya/tap-gitops.git
+  url: ssh://git@github.com/Mpluya/tap-gitops
   ref: origin/main
   sub_path: clusters/upgrade-view/cluster-config
 tap_package_repository:
