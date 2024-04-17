@@ -1,0 +1,37 @@
+---
+tap_install:
+  values:
+    profile: view
+    ceip_policy_disclosed: true
+
+    shared:
+      ingress_domain: view.upgrade.tapsme.org
+      ingress_issuer: letsencrypt-production
+
+    contour:
+      infrastructure_provider: aws
+      envoy:
+        service:
+          type: LoadBalancer
+
+    tap_gui:
+      metadataStoreAutoconfiguration: true
+      service_type: ClusterIP
+      app_config:
+        auth:
+          allowGuestAccess: true
+        organization:
+          name: "Global Tech Team"
+        catalog:
+          locations:
+            - type: url
+              target: https://github.com/maelarge/tap-catalog/blob/main/catalog-info.yaml
+
+    appliveview:
+      ingressEnabled: true
+      ingress_issuer: letsencrypt-production
+
+    metadata_store:
+      ingress_enabled: "true"
+      app_service_type: "ClusterIP"
+      ns_for_export_app_cert: "*"
