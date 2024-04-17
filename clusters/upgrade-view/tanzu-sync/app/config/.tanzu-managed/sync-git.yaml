@@ -22,7 +22,8 @@ spec:
     kind: SecretStore
   refreshInterval: "1m"
   target:
-    type: #@ "kubernetes.io/ssh-auth" if ssh_selected() else "kubernetes.io/basic-auth"
+    template:
+      type: #@ "kubernetes.io/ssh-auth" if ssh_selected() else "kubernetes.io/basic-auth"
   data:
     #@ if ssh_selected():
     - secretKey: ssh-privatekey
