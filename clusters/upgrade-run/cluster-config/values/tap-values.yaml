@@ -1,0 +1,24 @@
+---
+tap_install:
+  values:
+    profile: run
+    ceip_policy_disclosed: true
+
+    shared:
+      ingress_domain: run.upgrade.tapsme.org
+      ingress_issuer: letsencrypt-production
+
+    supply_chain: basic
+
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer
+
+    appliveview_connector:
+      backend:
+        ingressEnabled: true
+        host: appliveview.view.upgrade.tapsme.org
+
+    namespace_provisioner:
+      controller: true
