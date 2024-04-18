@@ -1,0 +1,15 @@
+---
+tap_install:
+  values:
+    profile: build
+    ceip_policy_disclosed: true
+
+    shared:
+      ingress_domain: build.upgrade.tapsme.org
+      image_registry:
+        project_path: "cxscssa.azurecr.io/tap-build"
+
+    supply_chain: basic
+
+    namespace_provisioner:
+      controller: true
