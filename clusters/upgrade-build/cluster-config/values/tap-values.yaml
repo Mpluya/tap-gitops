@@ -9,19 +9,7 @@ tap_install:
       image_registry:
         project_path: "cxscssa.azurecr.io/tap-build"
 
-    supply_chain: testing_scanning
+    supply_chain: basic
 
     namespace_provisioner:
       controller: true
-
-    grype:
-      namespace: jeremy
-      targetImagePullSecret: "registries-credentials"
-      metadataStore:
-        url: "https://metadata-store.view.upgrade.tapsme.org"
-        caSecret:
-          name: store-ca-cert
-          importFromNamespace: metadata-store-secrets
-        authSecret:
-          name: store-auth-token
-          importFromNamespace: metadata-store-secrets
