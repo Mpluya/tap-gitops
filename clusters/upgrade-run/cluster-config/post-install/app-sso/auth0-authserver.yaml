@@ -69,3 +69,20 @@ spec:
       remoteRef:
         key: dev/upgrade-run/tap/tenant-install-secrets
         property: clientSecret
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretExport
+metadata:
+  name: auth0-openid-client-secret
+  namespace: tap-install
+spec:
+  toNamespaces:
+    - shared-services
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  name: auth0-openid-client-secret
+  namespace: shared-services
+spec:
+  fromNamespace: tap-install
