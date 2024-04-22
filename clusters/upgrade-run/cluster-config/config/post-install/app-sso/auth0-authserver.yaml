@@ -45,9 +45,18 @@ spec:
       pub.pem: $(publicKey)
 
 ---
-apiVersion: v1
-kind: Secret
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
 metadata:
   name: auth0-openid-client-secret
-stringData:
-  clientSecret: b3YIHPIUu0NnnPYwEZY3WDOaAD2Hx7AkFh0mxkFBc2marTl7vQEBz0VikvSXsQn5
+  namespace: tap-install
+spec:
+  secretStoreRef:
+    name: tap-install-secrets
+    kind: SecretStore
+  refreshInterval: "1m"
+  data:
+    - secretKey: clientSecret
+      remoteRef:
+        key: dev/upgrade-run/tap/tenant-install-secrets
+        property: clientSecret
