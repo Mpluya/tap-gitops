@@ -12,11 +12,10 @@ tap_install:
     supply_chain: testing_scanning
 
     namespace_provisioner:
-      namespace_provisioner:
-        controller: true
-        additional_sources:
-        - git:
-            ref: origin/main
-            subPath: ns-provisioner-samples/testing-scanning-supplychain
-            url: https://github.com/vmware-tanzu/application-accelerator-samples.git
-          path: _ytt_lib/testing-scanning-supplychain-setup
+      controller: true
+      additional_sources:
+      - git:
+          ref: origin/main
+          subPath: ns-provisioner-samples/testing-scanning-supplychain
+          url: https://github.com/vmware-tanzu/application-accelerator-samples.git
+        path: _ytt_lib/testing-scanning-supplychain-setup
