@@ -11,6 +11,18 @@ tap_install:
 
     supply_chain: testing_scanning
 
+    grype:
+      namespace: jeremy
+      targetImagePullSecret: "registries-credentials"
+      metadataStore:
+        url: "https://metadata-store.view.upgrade.tapsme.org"
+        caSecret:
+          name: store-ca-cert
+          importFromNamespace: metadata-store-secrets
+        authSecret:
+          name: store-auth-token
+          importFromNamespace: metadata-store-secrets
+
     namespace_provisioner:
       controller: true
       additional_sources:
