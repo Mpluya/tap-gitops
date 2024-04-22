@@ -15,8 +15,10 @@ metadata:
     sso.apps.tanzu.vmware.com/allow-client-namespaces: "*"
 spec:
   tls:
-    certificateRef:
-      name: auth0-authserver-auth-server
+    issuerRef:
+      name: "letsencrypt-production"
+      kind: "ClusterIssuer"
+      group: cert-manager.io
   identityProviders:
     - name: auth0-identity-provider
       openID:
