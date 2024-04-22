@@ -9,7 +9,7 @@ tap_install:
       image_registry:
         project_path: "cxscssa.azurecr.io/tap-build"
 
-    supply_chain: basic
+    supply_chain: testing_scanning
 
     namespace_provisioner:
       namespace_provisioner:
