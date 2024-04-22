@@ -35,7 +35,7 @@ metadata:
   namespace: tap-install
 spec:
   toNamespaces:
-    - "metadata-store-secrets"
+    - "*"
 ---
 apiVersion: secretgen.carvel.dev/v1alpha1
 kind: SecretImport
@@ -44,3 +44,12 @@ metadata:
   namespace: metadata-store-secrets
 spec:
   fromNamespace: tap-install
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretExport
+metadata:
+  name: store-ca-cert
+  namespace: metadata-store-secrets
+spec:
+  toNamespaces:
+    - "*"
