@@ -1,0 +1,53 @@
+apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
+kind: AuthServer
+metadata:
+  name: auth0-authserver
+  labels:
+    name: auth0-authserver
+    env: production
+  annotations:
+    sso.apps.tanzu.vmware.com/allow-client-namespaces: "*"
+spec:
+  tls:
+    certificateRef:
+      name: auth0-authserver-auth-server
+  identityProviders:
+    - name: auth0-identity-provider
+      openID:
+        idToken:
+          claims:
+            - fromUpstream: "picture"
+              toClaim: "custom_picture"
+        issuerURI: https://dev-pbi3csp88xs4ezg5.us.auth0.com/
+        clientID: tcXPnhH0G2xrX4hD3XQihr3Tjpc1SKJA
+        clientSecretRef:
+          name: auth0-openid-client-secret
+        scopes:
+          - openid
+          - profile
+          - email
+  replicas: 1
+  tokenSignature:
+    signAndVerifyKeyRef:
+      name: auth0-authserver-signing-key
+
+---
+
+apiVersion: secretgen.k14s.io/v1alpha1
+kind: RSAKey
+metadata:
+  name: auth0-authserver-signing-key
+spec:
+  secretTemplate:
+    type: Opaque
+    stringData:
+      key.pem: $(privateKey)
+      pub.pem: $(publicKey)
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auth0-openid-client-secret
+stringData:
+  clientSecret: b3YIHPIUu0NnnPYwEZY3WDOaAD2Hx7AkFh0mxkFBc2marTl7vQEBz0VikvSXsQn5
