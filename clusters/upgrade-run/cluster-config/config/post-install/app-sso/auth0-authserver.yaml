@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shared-services
+---
 apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
 kind: AuthServer
 metadata:
   name: auth0-authserver
+  namespace: shared-services
   labels:
     name: auth0-authserver
     env: production
@@ -37,6 +43,7 @@ apiVersion: secretgen.k14s.io/v1alpha1
 kind: RSAKey
 metadata:
   name: auth0-authserver-signing-key
+  namespace: shared-services
 spec:
   secretTemplate:
     type: Opaque
