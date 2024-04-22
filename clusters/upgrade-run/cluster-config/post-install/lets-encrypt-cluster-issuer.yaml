@@ -137,3 +137,26 @@ metadata:
 imagePullSecrets:
   - name: install-registry-dockerconfig
 ---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  name: install-registry-dockerconfig
+  namespace: shared-services
+  annotations:
+    kapp.k14s.io/change-group: post-pkgi
+    kapp.k14s.io/change-rule.0: "upsert after upserting pkgi"
+    kapp.k14s.io/change-rule.1: "delete before deleting pkgi"
+spec:
+  fromNamespace: tanzu-sync
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tap-acme-http01-solver
+  namespace: shared-services
+  annotations:
+    kapp.k14s.io/change-group: post-pkgi
+    kapp.k14s.io/change-rule.0: "upsert after upserting pkgi"
+    kapp.k14s.io/change-rule.1: "delete before deleting pkgi"
+imagePullSecrets:
+  - name: install-registry-dockerconfig
