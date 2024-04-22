@@ -11,6 +11,13 @@ tap_install:
 
     supply_chain: testing_scanning
 
+    ootb_supply_chain_testing_scanning:
+      scanning:
+        image:
+          policy: lax-scan-policy
+        source:
+          policy: lax-scan-policy
+
     grype:
       namespace: jeremy
       targetImagePullSecret: "registries-credentials"
@@ -28,6 +35,6 @@ tap_install:
       additional_sources:
       - git:
           ref: origin/main
-          subPath: ns-provisioner-samples/testing-scanning-supplychain
+          subPath: ns-provisioner-samples/testing-scanning-supplychain-polyglot
           url: https://github.com/vmware-tanzu/application-accelerator-samples.git
         path: _ytt_lib/testing-scanning-supplychain-setup
