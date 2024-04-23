@@ -17,7 +17,12 @@ tap_install:
           policy: lax-scan-policy
         source:
           policy: lax-scan-policy
-
+      gitops:
+        ssh_secret: "git-auth"
+        server_address: "ssh://git@github.com"
+        repository_owner: "Mpluya"
+        repository_name: "tap-gitops-config"
+        branch: main
     grype:
       namespace: jeremy
       targetImagePullSecret: "registries-credentials"
