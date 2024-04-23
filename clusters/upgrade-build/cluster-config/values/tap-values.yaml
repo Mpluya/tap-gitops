@@ -45,7 +45,7 @@ tap_install:
         path: _ytt_lib/testing-scanning-supplychain-setup
       - git:
           ref: origin/main
-          subPath: credentials
+          subPath: namespaces/credentials
           url: https://github.com/Mpluya/tap-gitops.git
         path: _ytt_lib/creds
       import_data_values_secrets:
