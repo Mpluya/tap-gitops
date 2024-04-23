@@ -11,4 +11,4 @@ spec:
     versionSelection:
       constraints: ">=2.1.4"
       prereleases: {}
-  serviceAccountName: tap-tap-install-sa
+  serviceAccountName: tap-installer-sa
