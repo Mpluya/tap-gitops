@@ -38,6 +38,10 @@ tap_install:
           subPath: ns-provisioner-samples/testing-scanning-supplychain-polyglot
           url: https://github.com/vmware-tanzu/application-accelerator-samples.git
         path: _ytt_lib/testing-scanning-supplychain-setup
+      import_data_values_secrets:
+      - name: tenant-secrets
+        namespace: tap-install
+        create_export: true
     
     package_overlays:
     - name: "ootb-supply-chain-testing-scanning"
@@ -46,3 +50,9 @@ tap_install:
     - name: "ootb-templates"
       secrets: 
       - name: "ootb-template-overlay"
+=======
+      import_data_values_secrets:
+      - name: tenant-secrets
+        namespace: tap-install
+        create_export: true
+>>>>>>> 0239932 (add tenant-secrets es)
