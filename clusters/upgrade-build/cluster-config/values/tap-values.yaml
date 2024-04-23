@@ -50,9 +50,3 @@ tap_install:
     - name: "ootb-templates"
       secrets: 
       - name: "ootb-template-overlay"
-=======
-      import_data_values_secrets:
-      - name: tenant-secrets
-        namespace: tap-install
-        create_export: true
->>>>>>> 0239932 (add tenant-secrets es)
