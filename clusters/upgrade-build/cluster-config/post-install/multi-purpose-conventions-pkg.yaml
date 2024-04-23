@@ -1,0 +1,33 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageRepository
+metadata:
+  name: multi-purpose-conventions-repository
+  namespace: tap-install
+spec:
+  fetch:
+    imgpkgBundle:
+      image: projects.registry.vmware.com/tanzu_practice/conventions/multi-purpose-convention-server-bundle-repo:0.30.0
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: multi-purpose-conventions
+  namespace: tap-install
+spec:
+  serviceAccountName: tap-installer-sa
+  packageRef:
+    refName: multi-purpose-convention-server.conventions.tanzu.vmware.com
+    versionSelection:
+      constraints: ">=0.30.0"
+  values:
+    - secretRef:
+        name: multi-purpose-conventions-values
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: multi-purpose-conventions-values
+  namespace: tap-install
+stringData:
+  values.yaml: |
+    annotationPrefix: x95castle1.org
