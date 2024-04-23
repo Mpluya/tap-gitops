@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shared-services
+---
+apiVersion: sso.apps.tanzu.vmware.com/v1alpha1
+kind: AuthServer
+metadata:
+  name: auth0-authserver-custom-cert
+  namespace: shared-services
+  labels:
+    name: auth0-authserver-custom-cert
+    env: production
+  annotations:
+    sso.apps.tanzu.vmware.com/allow-client-namespaces: "*"
+spec:
+  tls:
+    issuerRef:
+      name: "bobby-ca-issuer"
+      kind: "ClusterIssuer"
+      group: cert-manager.io
+  identityProviders:
+    - name: auth0-identity-provider
+      openID:
+        idToken:
+          claims:
+            - fromUpstream: "picture"
+              toClaim: "custom_picture"
+        issuerURI: https://dev-pbi3csp88xs4ezg5.us.auth0.com/
+        clientID: tcXPnhH0G2xrX4hD3XQihr3Tjpc1SKJA
+        clientSecretRef:
+          name: auth0-openid-client-secret
+        scopes:
+          - openid
+          - profile
+          - email
+  replicas: 1
+  tokenSignature:
+    signAndVerifyKeyRef:
+      name: auth0-authserver-signing-key
+
+---
+
+apiVersion: secretgen.k14s.io/v1alpha1
+kind: RSAKey
+metadata:
+  name: auth0-authserver-signing-key
+  namespace: shared-services
+spec:
+  secretTemplate:
+    type: Opaque
+    stringData:
+      key.pem: $(privateKey)
+      pub.pem: $(publicKey)
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: auth0-openid-client-secret
+  namespace: tap-install
+spec:
+  secretStoreRef:
+    name: tap-install-secrets
+    kind: SecretStore
+  refreshInterval: "1m"
+  data:
+    - secretKey: clientSecret
+      remoteRef:
+        key: dev/upgrade-run/tap/tenant-install-secrets
+        property: clientSecret
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretExport
+metadata:
+  name: auth0-openid-client-secret
+  namespace: tap-install
+spec:
+  toNamespaces:
+    - shared-services
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  name: auth0-openid-client-secret
+  namespace: shared-services
+spec:
+  fromNamespace: tap-install
