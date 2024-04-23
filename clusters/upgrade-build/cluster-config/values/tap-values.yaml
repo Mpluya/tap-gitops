@@ -46,7 +46,7 @@ tap_install:
       - git:
           ref: origin/main
           subPath: credentials
-          url: https://github.com/vmware-tanzu/Mpluya/tap-gitops.git
+          url: https://github.com/Mpluya/tap-gitops.git
         path: _ytt_lib/creds
       import_data_values_secrets:
       - name: tenant-secrets
