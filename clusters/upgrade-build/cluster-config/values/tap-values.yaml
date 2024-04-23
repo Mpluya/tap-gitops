@@ -43,11 +43,6 @@ tap_install:
           subPath: ns-provisioner-samples/testing-scanning-supplychain-polyglot
           url: https://github.com/vmware-tanzu/application-accelerator-samples.git
         path: _ytt_lib/testing-scanning-supplychain-setup
-      - git:
-          ref: origin/main
-          subPath: namespaces/credentials
-          url: https://github.com/Mpluya/tap-gitops.git
-        path: _ytt_lib/creds
       import_data_values_secrets:
       - name: tenant-secrets
         namespace: tap-install
