@@ -18,7 +18,7 @@ tap_install:
         source:
           policy: lax-scan-policy
       gitops:
-        ssh_secret: "git-auth"
+        ssh_secret: "git-ssh"
         server_address: "ssh://git@github.com"
         repository_owner: "Mpluya"
         repository_name: "tap-gitops-config"
