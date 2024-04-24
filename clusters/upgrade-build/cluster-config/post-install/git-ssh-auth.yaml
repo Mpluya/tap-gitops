@@ -9,7 +9,7 @@ spec:
     kind: SecretStore
     name: tap-install-secrets
   target:
-    name: gith-ssh
+    name: git-ssh
     creationPolicy: Owner
     template:
       type: kubernetes.io/ssh-auth
