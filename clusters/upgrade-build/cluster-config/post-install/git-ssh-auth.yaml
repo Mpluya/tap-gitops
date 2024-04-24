@@ -20,6 +20,7 @@ spec:
         ssh-privatekey: "{{ .privatekey }}"
         identity: "{{ .privatekey }}"
         known_hosts: "{{ .knownhosts }}"
+        identity.pub: "{{ .githubSshIdentityPub }}"
 
   data:
     - secretKey: privatekey
@@ -31,6 +32,11 @@ spec:
       remoteRef:
         key: dev/upgrade-build/tap/tenant-install-secrets
         property: knownhosts
+    - secretKey: identitypub
+      remoteRef:
+        key: dev/upgrade-build/tap/tenant-install-secrets
+        property: identitypub
+        decodingStrategy: Base64
 ---
 apiVersion: secretgen.carvel.dev/v1alpha1
 kind: SecretExport
