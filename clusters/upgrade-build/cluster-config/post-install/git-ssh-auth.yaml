@@ -2,6 +2,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: git-ssh
+  namespace: tap-install
 spec:
   refreshInterval: 1m
   secretStoreRef:
@@ -30,3 +31,12 @@ spec:
       remoteRef:
         key: dev/upgrade-build/tap/tenant-install-secrets
         property: knownhosts
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretExport
+metadata:
+  name: gith-ssh
+  namespace: tap-install
+spec:
+  toNamespaces:
+    - "*"
