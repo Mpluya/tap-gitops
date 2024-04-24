@@ -35,7 +35,7 @@ spec:
 apiVersion: secretgen.carvel.dev/v1alpha1
 kind: SecretExport
 metadata:
-  name: gith-ssh
+  name: git-ssh
   namespace: tap-install
 spec:
   toNamespaces:
