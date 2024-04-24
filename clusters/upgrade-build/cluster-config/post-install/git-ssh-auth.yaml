@@ -20,7 +20,7 @@ spec:
         ssh-privatekey: "{{ .privatekey }}"
         identity: "{{ .privatekey }}"
         known_hosts: "{{ .knownhosts }}"
-        identity.pub: "{{ .githubSshIdentityPub }}"
+        identity.pub: "{{ .identitypub }}"
 
   data:
     - secretKey: privatekey
