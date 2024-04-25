@@ -11,7 +11,7 @@ spec:
 
   lifecycle: tekton
   healthRule:
-    alwaysHealthy: {}
+    singleConditionType: Ready
 
   ytt: |
     #@ load("@ytt:data", "data")
@@ -154,9 +154,7 @@ spec:
         resolver: cluster
         params:
           - name: kind
-            value: task
-          - name: namespace
-            value: tap-tasks
+            value: ClusterTask
           - name: name
             value: git-writer
 

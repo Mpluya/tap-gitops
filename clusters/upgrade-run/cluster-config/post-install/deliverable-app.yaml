@@ -1,0 +1,21 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: deliverables
+  namespace: tap-install
+spec:
+  serviceAccountName: tap-install-sa
+  fetch:
+    - git:
+        url: ssh://git@github.com/Mpluya/tap-deliverable-config-repo.git
+        ref: origin/main
+        subPath: config
+        secretRef:
+          name: sync-git
+  template:
+    - ytt: {}
+  deploy:
+    - kapp:
+        rawOptions:
+          - --dangerous-allow-empty-list-of-resources=true
+          - --diff-changes=true
