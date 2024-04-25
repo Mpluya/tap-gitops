@@ -41,7 +41,7 @@ stringData:
       params:
       #@overlay/append
       - name: deliverable_server_address
-        default: "ssh://git@github.com"  
+        default: "https://github.com"  
       - name: deliverable_repository_owner
         default: "mpluya" 
       - name: deliverable_repository_name
