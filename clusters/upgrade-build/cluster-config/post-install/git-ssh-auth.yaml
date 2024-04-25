@@ -13,9 +13,6 @@ spec:
     creationPolicy: Owner
     template:
       type: kubernetes.io/ssh-auth
-      metadata:
-        annotations:
-          tekton.dev/git-0: github.com
       data:
         ssh-privatekey: "{{ .privatekey }}"
         identity: "{{ .privatekey }}"
