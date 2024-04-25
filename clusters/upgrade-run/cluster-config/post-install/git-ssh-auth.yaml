@@ -22,16 +22,16 @@ spec:
   data:
     - secretKey: privatekey
       remoteRef:
-        key: dev/upgrade-build/tap/tenant-install-secrets
+        key: dev/upgrade-run/tap/tenant-install-secrets
         property: privatekey
         decodingStrategy: Base64
     - secretKey: knownhosts
       remoteRef:
-        key: dev/upgrade-build/tap/tenant-install-secrets
+        key: dev/upgrade-run/tap/tenant-install-secrets
         property: knownhosts
     - secretKey: identitypub
       remoteRef:
-        key: dev/upgrade-build/tap/tenant-install-secrets
+        key: dev/upgrade-run/tap/tenant-install-secrets
         property: identitypub
         decodingStrategy: Base64
 ---

@@ -21,11 +21,11 @@ spec:
   data:
     - secretKey: gitPassword
       remoteRef:
-        key: dev/upgrade-build/tap/tenant-install-secrets
+        key: dev/upgrade-run/tap/tenant-install-secrets
         property: gitPassword
     - secretKey: gitUsername
       remoteRef:
-        key: dev/upgrade-build/tap/tenant-install-secrets
+        key: dev/upgrade-run/tap/tenant-install-secrets
         property: gitUsername
 ---
 apiVersion: secretgen.carvel.dev/v1alpha1
