@@ -22,3 +22,13 @@ tap_install:
 
     namespace_provisioner:
       controller: true
+      additional_sources:
+        - git:
+            ref: origin/main
+            subPath: namespaces/credentials
+            url: https://github.com/Mpluya/tap-gitops.git
+          path: _ytt_lib/creds
+      overlay_secrets:
+        - name: workload-git-overlay
+          namespace: tap-install
+          create_export: true

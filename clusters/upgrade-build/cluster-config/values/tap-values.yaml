@@ -48,10 +48,6 @@ tap_install:
           subPath: namespaces/credentials
           url: https://github.com/Mpluya/tap-gitops.git
         path: _ytt_lib/creds
-      import_data_values_secrets:
-      - name: tenant-secrets
-        namespace: tap-install
-        create_export: true
       overlay_secrets:
       - name: workload-git-overlay
         namespace: tap-install

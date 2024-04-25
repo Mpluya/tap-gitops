@@ -1,0 +1,45 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: git-ssh
+  namespace: tap-install
+spec:
+  refreshInterval: 1m
+  secretStoreRef:
+    kind: SecretStore
+    name: tap-install-secrets
+  target:
+    name: git-ssh
+    creationPolicy: Owner
+    template:
+      type: kubernetes.io/ssh-auth
+      data:
+        ssh-privatekey: "{{ .privatekey }}"
+        identity: "{{ .privatekey }}"
+        known_hosts: "{{ .knownhosts }}"
+        identity.pub: "{{ .identitypub }}"
+
+  data:
+    - secretKey: privatekey
+      remoteRef:
+        key: dev/upgrade-build/tap/tenant-install-secrets
+        property: privatekey
+        decodingStrategy: Base64
+    - secretKey: knownhosts
+      remoteRef:
+        key: dev/upgrade-build/tap/tenant-install-secrets
+        property: knownhosts
+    - secretKey: identitypub
+      remoteRef:
+        key: dev/upgrade-build/tap/tenant-install-secrets
+        property: identitypub
+        decodingStrategy: Base64
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretExport
+metadata:
+  name: git-ssh
+  namespace: tap-install
+spec:
+  toNamespaces:
+    - "*"
