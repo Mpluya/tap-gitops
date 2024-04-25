@@ -53,7 +53,7 @@ tap_install:
         namespace: tap-install
         create_export: true
       overlay_secrets:
-      - name: workload-git-ssh-overlay
+      - name: workload-git-overlay
         namespace: tap-install
         create_export: true
     package_overlays:
