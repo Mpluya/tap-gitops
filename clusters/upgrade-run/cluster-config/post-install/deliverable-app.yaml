@@ -7,7 +7,7 @@ spec:
   serviceAccountName: tap-install-sa
   fetch:
     - git:
-        url: ssh://git@github.com/Mpluya/tap-deliverable-config-repo.git
+        url: ssh://git@github.com/Mpluya/tap-gitops-deliverable.git
         ref: origin/main
         subPath: config
         secretRef:
