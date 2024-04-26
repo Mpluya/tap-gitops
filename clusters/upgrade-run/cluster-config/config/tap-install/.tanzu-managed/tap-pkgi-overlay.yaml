@@ -33,11 +33,9 @@ stringData:
             custom-lbl: custom-lbl-value
             cost-id: add-to-tab
     
-          #@overlay/match missing_ok=True
+          #@overlay/match-child-defaults missing_ok=True
           annotations:
-            #@overlay/match missing_ok=True
             custom-lbl: custom-lbl-value
-            #@overlay/match missing_ok=True
             cost-id: add-to-tab
     
     #@overlay/match by=overlay.subset(match_packageinstall()), expects="1+"
