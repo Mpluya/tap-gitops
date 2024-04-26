@@ -18,7 +18,11 @@ spec:
           name: sync-git
         subPath: clusters/upgrade-run/cluster-config/post-install
   template:
-    - ytt: {}
+    - ytt:
+        inline:
+          pathsFrom:
+            - secretRef:
+                name: tap-pkgi-overlay-secret
   deploy:
     - kapp:
         rawOptions:
