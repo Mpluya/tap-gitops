@@ -28,7 +28,7 @@ stringData:
         #@overlay/match by=overlay.subset(match_namespace()), expects="0+"
         ---
         metadata:
-          #@overlay/match-child-defaults missing_ok=True
+          #@overlay/match-child-defaults missing_ok=True, expects="0+"
           labels:
             custom-lbl: custom-lbl-value
             cost-id: add-to-tab
