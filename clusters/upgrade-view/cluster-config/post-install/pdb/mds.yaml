@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: metadata-store-pdb
+  namespace: metadata-store
+spec:
+  minAvailable: 60%
+  selector:
+    matchLabels:
+      app: metadata-store-app

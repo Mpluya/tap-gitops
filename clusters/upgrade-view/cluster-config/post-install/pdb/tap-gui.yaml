@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: tap-gui-pdb
+  namespace: tap-gui
+spec:
+  minAvailable: 60%
+  selector:
+    matchLabels:
+      app: backstage

@@ -17,6 +17,8 @@ tap_install:
     tap_gui:
       metadataStoreAutoconfiguration: true
       service_type: ClusterIP
+      deployment:
+        replicas: 3
       app_config:
         auth:
           allowGuestAccess: true
@@ -35,3 +37,4 @@ tap_install:
       ingress_enabled: "true"
       app_service_type: "ClusterIP"
       ns_for_export_app_cert: "*"
+      app_replicas: 3
