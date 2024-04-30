@@ -156,3 +156,5 @@ spec:
             value: task
           - name: namespace
             value: tap-tasks
+          - name: name
+            value: git-writer
