@@ -28,6 +28,7 @@ stringData:
         #@overlay/match by=overlay.subset(match_namespace()), expects="0+"
         ---
         metadata:
+          #@overlay/match missing_ok=True
           #@overlay/match-child-defaults missing_ok=True
           labels:
             custom-lbl: custom-lbl-value
