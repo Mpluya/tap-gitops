@@ -150,5 +150,9 @@ spec:
         - name: sub_path
           value: #@ "config/" + data.values.workload.metadata.namespace + "/" + data.values.workload.metadata.name
       taskRef:
-        kind: ClusterTask
-        name: git-writer
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: namespace
+            value: tap-tasks
