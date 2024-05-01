@@ -60,7 +60,7 @@ tap_install:
             autoconfigure: false
             enable: true
         cloudevent_handler:
-          endpoint: amr-cloudevent-handler.view.upgrade.tapsme.org
+          endpoint: https://amr-cloudevent-handler.view.upgrade.tapsme.org
         ca_cert_data: |
           -----BEGIN CERTIFICATE-----
           MIIFKjCCBBKgAwIBAgISBLpEDhSBTTlRdcSCHPJDwABKMA0GCSqGSIb3DQEBCwUA
