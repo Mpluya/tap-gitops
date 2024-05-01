@@ -57,7 +57,8 @@ tap_install:
       observer:
         auth:
           kubernetes_service_accounts:
-            enable: true
+            autoconfigure: false
+            enable: false
         cloudevent_handler:
           endpoint: amr-cloudevent-handler.view.upgrade.tapsme.org
         ca_cert_data: |
