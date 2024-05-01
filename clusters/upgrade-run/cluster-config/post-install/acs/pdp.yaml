@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: acs
+  namespace: application-configuration-service
+spec:
+  minAvailable: 60%
+  selector:
+    matchLabels:
+      app: application-configuration-service

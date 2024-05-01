@@ -34,7 +34,7 @@ spec:
           - openid
           - profile
           - email
-  replicas: 1
+  replicas: 3
   tokenSignature:
     signAndVerifyKeyRef:
       name: auth0-authserver-signing-key

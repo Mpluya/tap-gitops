@@ -12,3 +12,16 @@ spec:
       constraints: ">=2.1.4"
       prereleases: {}
   serviceAccountName: tap-installer-sa
+  values:
+    - secretRef:
+        name: acs-values
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: acs-values
+  namespace: tap-install
+stringData:
+  values.yaml: |
+    reconciler:
+      replicas: 3
