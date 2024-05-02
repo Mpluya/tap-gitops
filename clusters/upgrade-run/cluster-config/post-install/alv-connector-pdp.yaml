@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: alv-connector
+  namespace: app-live-view-connector
+spec:
+  minAvailable: 60%
+  selector:
+    matchLabels:
+      name: application-live-view-connector
