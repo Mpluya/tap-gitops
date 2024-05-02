@@ -8,6 +8,7 @@ metadata:
     kapp.k14s.io/change-group: eso/install
     kapp.k14s.io/change-rule.0: "upsert after upserting tap-repo"
     kapp.k14s.io/change-rule.1: "delete before deleting tap-repo"
+    packaging.carvel.dev/downgradable: ""
 spec:
   serviceAccountName: sync-sa
   packageRef:
