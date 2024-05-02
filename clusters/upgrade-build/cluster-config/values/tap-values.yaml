@@ -23,17 +23,80 @@ tap_install:
         repository_owner: "Mpluya"
         repository_name: "tap-gitops-config"
         branch: main
-    grype:
-      namespace: jeremy
-      targetImagePullSecret: "registries-credentials"
+
+
+    scanning:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 3Gi
+        requests:
+          cpu: 200m
+          memory: 1Gi
       metadataStore:
-        url: "https://metadata-store.view.upgrade.tapsme.org"
-        caSecret:
-          name: store-ca-cert
-          importFromNamespace: metadata-store-secrets
-        authSecret:
-          name: store-auth-token
-          importFromNamespace: metadata-store-secrets
+        exports:
+          ca:
+            pem: |
+              -----BEGIN CERTIFICATE-----
+              MIIFGTCCBAGgAwIBAgISAwBOaS5s0TLBQ23+rBKkPTacMA0GCSqGSIb3DQEBCwUA
+              MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+              EwJSMzAeFw0yNDA0MTgxNzM0MDhaFw0yNDA3MTcxNzM0MDdaMDExLzAtBgNVBAMT
+              Jm1ldGFkYXRhLXN0b3JlLnZpZXcudXBncmFkZS50YXBzbWUub3JnMIIBIjANBgkq
+              hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4rwgs/GA2TCXZlHeE8toTdlGpIloVC4J
+              /pWsaOvYA/Nqs6zX65tfWOOWh48furNo8bkUpmP47iaNr6NZIAyOsXfCHTmfdCMW
+              HZUziCw9C2FipwGa6Kr8mgwzva8UVpKEl/dLJzyJ2SjyMB/+BRUrCJhkHDZkTvqo
+              aHsxQ9DMu44bRpgsJ4AbE/ZqhqMs14Da5OFjsIhDXUSROgYx/UVTQBhr//skJF0+
+              b+sB7gwiDHRcu0leuRSs71UItaM8hYIrwGrS4p8JHSNA4WuXaA+lD707kSu1hlLH
+              bgjV2qfYEcUGnZK+6VCXCm7viDl7ByIeWP4ILMWSqjshe/svzi/+GwIDAQABo4IC
+              KDCCAiQwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEF
+              BQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSQNqpdUDTeyD/Sj/BO7xM/cRuy
+              qDAfBgNVHSMEGDAWgBQULrMXt1hWy65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJ
+              MEcwIQYIKwYBBQUHMAGGFWh0dHA6Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcw
+              AoYWaHR0cDovL3IzLmkubGVuY3Iub3JnLzAxBgNVHREEKjAogiZtZXRhZGF0YS1z
+              dG9yZS52aWV3LnVwZ3JhZGUudGFwc21lLm9yZzATBgNVHSAEDDAKMAgGBmeBDAEC
+              ATCCAQQGCisGAQQB1nkCBAIEgfUEgfIA8AB2AEiw42vapkc0D+VqAvqdMOscUgHL
+              Vt0sgdm7v6s52IRzAAABjvJ8yp4AAAQDAEcwRQIhAPkBk8C4uMXg0wH2fZHtObre
+              R6b6rpCgiUpm0bVWcTgwAiBq1uP6jR5cdplX9jUoHRcvwra67ctsQnXkYP0dReqD
+              swB2AD8XS0/XIkdYlB1lHIS+DRLtkDd/H4Vq68G/KIXs+GRuAAABjvJ8yp4AAAQD
+              AEcwRQIhAJWUi2GJ2b7HVAFquaUnZnig2vB3ZcTFVXSGr7gvBbrkAiA0rJWdKRHv
+              XSXPUSyqUvcn1T6JioDYnqYs7vEQwaSCTzANBgkqhkiG9w0BAQsFAAOCAQEAVN6h
+              5gR4tq71FMpM1M2sSaNY+BEzTeETupE75w4j75uR5qVJUMnq4UUn62/+xgzixY3t
+              KVxOWWhkovDVE6yP+90wonVE/yJkVtaXW+iuMBX3Dcw+8h2KCX/9gt2dDZR0I2n+
+              vh5UeMNYFk/ZHsFeNDr6O24dwOKkaIrCr3Aea4xe2Z0OTaurB5h9QrJ1zobmYhiH
+              DSikMelQcY66rV+CR0FhE90dii82cBvr1L8Nl5kGAI2OqRF0bQQkDYB4XBpTQkC0
+              ovCDXjHC9HXjRZ3JKxS7bz/jjTw/kBBSBk+xtuijZMMUrbnZfDo0TGUgrDnGtWzG
+              2IReElWqiSDkhR0Giw==
+              -----END CERTIFICATE-----
+              -----BEGIN CERTIFICATE-----
+              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
+              nLRbwHOoq7hHwg==
+              -----END CERTIFICATE-----
 
     namespace_provisioner:
       controller: true
