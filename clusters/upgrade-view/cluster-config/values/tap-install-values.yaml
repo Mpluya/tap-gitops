@@ -1,3 +1,3 @@
 tap_install:
   package_repository:
-    oci_repository: cxscssa.azurecr.io/tap-1-7-5/tap-packages
+    oci_repository: cxscssa.azurecr.io/tap-1-8-2/tap-packages

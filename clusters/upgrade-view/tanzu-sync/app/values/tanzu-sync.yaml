@@ -4,4 +4,4 @@ git:
   ref: origin/main
   sub_path: clusters/upgrade-view/cluster-config
 tap_package_repository:
-  oci_repository: cxscssa.azurecr.io/tap-1-7-5/tap-packages
+  oci_repository: cxscssa.azurecr.io/tap-1-8-2/tap-packages
