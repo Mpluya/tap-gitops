@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tap-pkgi-downgradeable-overlay-secret
+  namespace: tap-install
+stringData:
+  overlay-tap-pkgi.yml: |
+    #@ load("@ytt:overlay", "overlay")
+    
+    #@ def match_packageinstall():
+    kind: PackageInstall
+    #@ end
+        
+    #@overlay/match by=overlay.subset(match_packageinstall()), expects="1+"
+    ---
+    metadata:
+      #@overlay/match missing_ok=True
+      annotations:
+        #@overlay/match missing_ok=True
+        packaging.carvel.dev/downgradable: ""
