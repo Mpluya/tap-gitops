@@ -22,7 +22,7 @@ spec:
         inline:
           pathsFrom:
             - secretRef:
-                name: tap-pkgi-overlay-secret
+                name: tap-pkgi-downgradeable-overlay-secret
   deploy:
     - kapp:
         rawOptions:
