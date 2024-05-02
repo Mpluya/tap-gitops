@@ -24,6 +24,10 @@ tap_install:
           enabled: true
           replicas: 3
 
+    api_auto_registration:
+      tap_gui_url: "https://tap-gui.view.upgrade.tapsme.org"
+      cluster_name: run
+
     namespace_provisioner:
       controller: true
       additional_sources:
