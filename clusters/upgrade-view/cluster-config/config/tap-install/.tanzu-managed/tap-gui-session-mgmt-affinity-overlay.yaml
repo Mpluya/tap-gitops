@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tap-pkgi-downgradeable-overlay-secret
+  namespace: tap-install
+stringData:
+  tap-gui-session-mgmt-affinity.yml: |
+    #@overlay/match by=overlay.subset({"kind":"HTTPProxy","metadata":{"name":"tap-gui"}})
+    ---
+    spec:
+      routes:
+        #@overlay/match by=overlay.subset({"services": [{"name": "server"}]}) 
+        - services: []
+          #@overlay/match missing_ok=True
+          loadBalancerPolicy:
+            strategy: Cookie

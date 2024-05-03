@@ -18,7 +18,7 @@ tap_install:
       metadataStoreAutoconfiguration: true
       service_type: ClusterIP
       deployment:
-        replicas: 1
+        replicas: 3
       app_config:
         auth:
           allowGuestAccess: true
