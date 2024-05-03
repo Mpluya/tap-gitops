@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: tap-pkgi-downgradeable-overlay-secret
+  name: tap-gui-session-mgmt-affinity-secret
   namespace: tap-install
 stringData:
   tap-gui-session-mgmt-affinity.yml: |
