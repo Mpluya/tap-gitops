@@ -38,3 +38,8 @@ tap_install:
       app_service_type: "ClusterIP"
       ns_for_export_app_cert: "*"
       app_replicas: 3
+
+    package_overlays:
+      - name: "tap-gui"
+        secrets:
+          - name: "tap-gui-session-mgmt-affinity-secret"
