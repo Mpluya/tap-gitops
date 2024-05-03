@@ -5,6 +5,8 @@ metadata:
   namespace: tap-install
 stringData:
   tap-gui-session-mgmt-affinity.yml: |
+    #@ load("@ytt:overlay", "overlay")
+    
     #@overlay/match by=overlay.subset({"kind":"HTTPProxy","metadata":{"name":"tap-gui"}})
     ---
     spec:
